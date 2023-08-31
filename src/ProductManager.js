@@ -1,8 +1,10 @@
 const fs = require("fs");
 
+
 class ProductManager {
   constructor(filePath) {
     this.filePath = filePath;
+    this.secondaryIdCounter = 1; // Inicializamos el contador para el ID secundario
   }
 
   fileExist() {
@@ -36,6 +38,7 @@ class ProductManager {
 
         const newProduct = {
           id: this.generateUniqueId(),
+          secondaryId: this.secondaryIdCounter++,
           title,
           description,
           price,
@@ -123,6 +126,8 @@ class ProductManager {
   generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
   }
+
+
 }
 
 // Operaciones a realizar
@@ -134,14 +139,14 @@ class ProductManager {
     const newProduct = await manager.addProduct(
       "producto prueba",
       "Este es un producto prueba",
-      200,
+      250,
       "Sin imagen",
-      "abc123",
+      "def123",
       25
     );
     console.log(newProduct);
 
-    // Actualiza producto
+    /* Actualiza producto
     const updatedFields = {
       title: "Producto actualizado",
       price: 250
@@ -159,7 +164,7 @@ class ProductManager {
       console.log("Producto encontrado por ID:", productFound);
     } else {
       console.log("No hay productos en la lista.");
-    }
+    }*/
   } catch (error) {
     console.log(error.message);
   }

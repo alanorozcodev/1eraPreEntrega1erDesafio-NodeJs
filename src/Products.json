@@ -1,1 +1,22 @@
-[]
+[
+	{
+		"id": "llzsdd6p13taw6g0lp8f",
+		"secondaryId": 1,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 200,
+		"thumbnail": "Sin imagen",
+		"code": "abc123",
+		"stock": 25
+	},
+	{
+		"id": "llzsdqqoz8xyvql1otr",
+		"secondaryId": 1,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 250,
+		"thumbnail": "Sin imagen",
+		"code": "def123",
+		"stock": 25
+	}
+]
