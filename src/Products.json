@@ -1,22 +1,102 @@
 [
 	{
-		"id": "llzsdd6p13taw6g0lp8f",
+		"id": "llztadnt9clx70660j",
 		"secondaryId": 1,
 		"title": "producto prueba",
 		"description": "Este es un producto prueba",
-		"price": 200,
+		"price": 150,
 		"thumbnail": "Sin imagen",
 		"code": "abc123",
-		"stock": 25
+		"stock": 20
 	},
 	{
-		"id": "llzsdqqoz8xyvql1otr",
-		"secondaryId": 1,
+		"id": "llztakc7h1dkjc2brzb",
+		"secondaryId": 2,
 		"title": "producto prueba",
 		"description": "Este es un producto prueba",
-		"price": 250,
+		"price": 150,
 		"thumbnail": "Sin imagen",
 		"code": "def123",
-		"stock": 25
+		"stock": 20
+	},
+	{
+		"id": "llztaqrfyr0u1ewghpj",
+		"secondaryId": 3,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "ghi123",
+		"stock": 20
+	},
+	{
+		"id": "llztayi7le1t0h332yn",
+		"secondaryId": 4,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "jkl123",
+		"stock": 20
+	},
+	{
+		"id": "llztb5v8k0lv1xt57ze",
+		"secondaryId": 5,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "mno123",
+		"stock": 20
+	},
+	{
+		"id": "llztbdgkyzsovto73fj",
+		"secondaryId": 6,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "pqr123",
+		"stock": 20
+	},
+	{
+		"id": "llztbimhdras2vazyun",
+		"secondaryId": 7,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "stu123",
+		"stock": 20
+	},
+	{
+		"id": "llztbov2jy8q7kbljnq",
+		"secondaryId": 8,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "vwx123",
+		"stock": 20
+	},
+	{
+		"id": "llztbwzfjpqxgb5dcy",
+		"secondaryId": 9,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "yza123",
+		"stock": 20
+	},
+	{
+		"id": "llztc1zfugxkhbjg01",
+		"secondaryId": 10,
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 150,
+		"thumbnail": "Sin imagen",
+		"code": "bcd123",
+		"stock": 20
 	}
 ]

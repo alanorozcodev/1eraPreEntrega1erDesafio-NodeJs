@@ -4,7 +4,7 @@ const fs = require("fs");
 class ProductManager {
   constructor(filePath) {
     this.filePath = filePath;
-    this.secondaryIdCounter = 1; // Inicializamos el contador para el ID secundario
+    this.secondaryIdCounter = 0; // Inicializamos el contador para el ID secundario
   }
 
   fileExist() {
@@ -35,10 +35,10 @@ class ProductManager {
         if (contenidoJson.some(product => product.code === code)) {
           throw new Error("Ya existe un producto con ese codigo.");
         }
-
+        console.log("Before increment:", this.secondaryIdCounter);
         const newProduct = {
           id: this.generateUniqueId(),
-          secondaryId: this.secondaryIdCounter++,
+          secondaryId: ++this.secondaryIdCounter,
           title,
           description,
           price,
@@ -46,7 +46,7 @@ class ProductManager {
           code,
           stock,
         };
-
+        console.log("After increment:", this.secondaryIdCounter);
         contenidoJson.push(newProduct);
 
         await fs.promises.writeFile(
@@ -133,16 +133,22 @@ class ProductManager {
 // Operaciones a realizar
 (async () => {
   try {
-    const manager = new ProductManager("./Products.json");
 
+    let initialCounter = 0;
+  if (fs.existsSync("counter.txt")) {
+  initialCounter = parseInt(fs.readFileSync("counter.txt", "utf-8"));
+  }
+
+    const manager = new ProductManager("./Products.json");
+    manager.secondaryIdCounter = initialCounter;
     // Agrega producto
     const newProduct = await manager.addProduct(
       "producto prueba",
       "Este es un producto prueba",
-      250,
+      150,
       "Sin imagen",
-      "def123",
-      25
+      "bcd123",
+      20
     );
     console.log(newProduct);
 
@@ -165,7 +171,11 @@ class ProductManager {
     } else {
       console.log("No hay productos en la lista.");
     }*/
+
+    fs.writeFileSync("counter.txt", manager.secondaryIdCounter.toString(), "utf-8");
   } catch (error) {
     console.log(error.message);
   }
+
+
 })();
