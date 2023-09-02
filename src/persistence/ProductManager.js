@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 
 class ProductManager {
@@ -139,7 +139,7 @@ class ProductManager {
   initialCounter = parseInt(fs.readFileSync("counter.txt", "utf-8"));
   }
 
-    const manager = new ProductManager("./Products.json");
+    const manager = new ProductManager("./persistence/Products.json");
     manager.secondaryIdCounter = initialCounter;
     // Agrega producto
     const newProduct = await manager.addProduct(
@@ -179,3 +179,6 @@ class ProductManager {
 
 
 })();
+
+
+export default ProductManager;
