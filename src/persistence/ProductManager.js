@@ -1,16 +1,20 @@
 import fs from "fs";
 
 
+
 class ProductManager {
   constructor(filePath) {
     this.filePath = filePath;
     this.secondaryIdCounter = 0; // Inicializamos el contador para el ID secundario
   }
 
+  //Existe el archivo
   fileExist() {
     return fs.existsSync(this.filePath);
   }
 
+
+  // Métodos Obtener Productos
   async getProducts() {
     try {
       if (this.fileExist()) {
@@ -21,11 +25,12 @@ class ProductManager {
         throw new Error("No es posible leer el archivo");
       }
     } catch (error) {
-      console.log(error.message);
       throw new Error("Error al obtener productos.");
     }
   }
 
+
+   // Método Agregar Productos
   async addProduct(title, description, price, thumbnail, code, stock) {
     try {
       if (this.fileExist()) {
@@ -53,17 +58,17 @@ class ProductManager {
           this.filePath,
           JSON.stringify(contenidoJson, null, "\t")
         );
-        console.log("Nuevo producto agregado");
         return newProduct;
       } else {
         throw new Error("No es posible agregar el producto");
       }
     } catch (error) {
-      console.log(error.message);
       throw new Error("Error al agregar el producto.");
     }
   }
 
+
+    // Método Obtener Productos Por ID primario
   async getProductById(id) {
     try {
       const products = await this.getProducts();
@@ -73,10 +78,27 @@ class ProductManager {
       }
       return product;
     } catch (error) {
-      console.error("Error al obtener producto por ID:", error.message);
       throw new Error("Error al obtener producto por ID");
     }
   }
+
+  // Método Obtener Productos Por ID secundario  
+  async getProductBySecondaryId(id){
+  try {
+    const productsId = await this.getProducts();
+    const filteredId = productsId.find(p=>p.secondaryId === id);
+    if(filteredId){
+        return filteredId;
+    } else {
+      throw new Error("El id solicitado no existe");
+    }
+
+} catch (error) {
+  throw new Error(error.message)
+}
+}
+
+    // Método Actualizar Productos
 
   async updateProduct(id, updatedFields) {
     try {
@@ -103,6 +125,7 @@ class ProductManager {
     }
   }
 
+    // Método Borrar Productos
   async deleteProduct(id) {
     try {
       const products = await this.getProducts();
@@ -126,59 +149,7 @@ class ProductManager {
   generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
   }
-
-
 }
-
-// Operaciones a realizar
-(async () => {
-  try {
-
-    let initialCounter = 0;
-  if (fs.existsSync("counter.txt")) {
-  initialCounter = parseInt(fs.readFileSync("counter.txt", "utf-8"));
-  }
-
-    const manager = new ProductManager("./persistence/Products.json");
-    manager.secondaryIdCounter = initialCounter;
-    // Agrega producto
-    const newProduct = await manager.addProduct(
-      "producto prueba",
-      "Este es un producto prueba",
-      150,
-      "Sin imagen",
-      "bcd123",
-      20
-    );
-    console.log(newProduct);
-
-    /* Actualiza producto
-    const updatedFields = {
-      title: "Producto actualizado",
-      price: 250
-    };
-    await manager.updateProduct(newProduct.id, updatedFields);
-
-    // Elimina producto
-    const deletedProduct = await manager.deleteProduct(newProduct.id);
-    console.log("Producto eliminado:", deletedProduct);
-
-    // Probar Busca por ID
-    const products = await manager.getProducts();
-    if (products.length > 0) {
-      const productFound = await manager.getProductById(products[0].id);
-      console.log("Producto encontrado por ID:", productFound);
-    } else {
-      console.log("No hay productos en la lista.");
-    }*/
-
-    fs.writeFileSync("counter.txt", manager.secondaryIdCounter.toString(), "utf-8");
-  } catch (error) {
-    console.log(error.message);
-  }
-
-
-})();
 
 
 export default ProductManager;

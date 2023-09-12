@@ -1,49 +1,18 @@
-import express, { response } from "express";
-import ProductManager from "./persistence/ProductManager.js"
-
-const managerProductService = new ProductManager("./src/files/Products.json");
+import express from "express";
+import { productsRouter } from "./routes/products.routes.js";
+import { cartsRouter } from "./routes/carts.routes.js";
+import cors from "cors";
 
 
 const port =8080;
-
 const app = express();
+app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
-app.listen(port,() => console.log("Servidor Funcionando"));
+app.listen(port,() => console.log( `Servidor Funcionando en el puerto ${port} `));
 
 //Rutas del servidor
-
-app.get("/products", async(req,res)=> {
-try {
-    const limit = req.query.limit;
-    const limitNumber = parseInt(limit);
-    const products = await managerProductService.getProducts();
-    if(limit){
-        const productsLimit = products.slice(0,limitNumber);
-        res.send(productsLimit);
-    } else {
-        res.send(products);
-    }
-    
-
-} catch (error) {
-    res.send(error.message)
-}
-});
-
-app.get("/products/:pid", async(req,res)=> {
-    try {
-        const id = parseInt(req.params.pid);
-        const productsId = await managerProductService.getProducts();
-        const filteredId = productsId.find(p=>p.secondaryId === id);
-        if(filteredId){
-            res.send(filteredId);
-        } else {
-            res.send("El id solicitado no existe");
-        }
-    
-    } catch (error) {
-        res.send(error.message)
-    }
-    });
+app.use("/api/products",productsRouter);
+app.use("/api/carts",cartsRouter);
 
 
