@@ -36,7 +36,7 @@ router.get("/:pid", async(req,res)=>{
 });
 
 // Agregar Producto
-router.get("/", async(req,res) => {
+router.post("/", async(req,res) => {
 try {
     const newProduct = req.body;
     await managerProductService.addProduct(newProduct.title, newProduct.description, newProduct.price, newProduct.thumbnail, newProduct.code, newProduct.stock);
