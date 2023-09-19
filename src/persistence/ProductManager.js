@@ -5,7 +5,6 @@ import fs from "fs";
 class ProductManager {
   constructor(filePath) {
     this.filePath = filePath;
-    this.secondaryIdCounter = 0; // Inicializamos el contador para el ID secundario
   }
 
   //Existe el archivo
@@ -30,10 +29,10 @@ class ProductManager {
   }
 
 //  Métodos Agregar Productos
-async createProduct(productInfo){
+async addProduct(productInfo){
   try {
       if(this.fileExist()){
-          const contenidoString = await fs.promises.readFile(this.pathFile,"utf-8");
+          const contenidoString = await fs.promises.readFile(this.filePath,"utf-8");
           const products = JSON.parse(contenidoString);
           let newId=1;
           if(products.length>0){
@@ -41,7 +40,7 @@ async createProduct(productInfo){
           }
           productInfo.id=newId;
           products.push(productInfo);
-          await fs.promises.writeFile(this.pathFile, JSON.stringify(products, null, 2));
+          await fs.promises.writeFile(this.filePath, JSON.stringify(products, null, 2));
           return "Producto agregado";
       } else {
           throw new Error("No se pudieron obtener los productos");
