@@ -29,74 +29,49 @@ class ProductManager {
     }
   }
 
-
-   // Método Agregar Productos
-  async addProduct(title, description, price, thumbnail, code, stock) {
-    try {
-      if (this.fileExist()) {
-        const contenido = await fs.promises.readFile(this.filePath, "utf-8");
-        const contenidoJson = JSON.parse(contenido);
-
-        if (contenidoJson.some(product => product.code === code)) {
-          throw new Error("Ya existe un producto con ese codigo.");
-        }
-        console.log("Before increment:", this.secondaryIdCounter);
-        const newProduct = {
-          id: this.generateUniqueId(),
-          secondaryId: ++this.secondaryIdCounter,
-          title,
-          description,
-          price,
-          thumbnail,
-          code,
-          stock,
-        };
-        console.log("After increment:", this.secondaryIdCounter);
-        contenidoJson.push(newProduct);
-
-        await fs.promises.writeFile(
-          this.filePath,
-          JSON.stringify(contenidoJson, null, "\t")
-        );
-        return newProduct;
+//  Métodos Agregar Productos
+async createProduct(productInfo){
+  try {
+      if(this.fileExist()){
+          const contenidoString = await fs.promises.readFile(this.pathFile,"utf-8");
+          const products = JSON.parse(contenidoString);
+          let newId=1;
+          if(products.length>0){
+              newId=products[products.length-1].id+1;
+          }
+          productInfo.id=newId;
+          products.push(productInfo);
+          await fs.promises.writeFile(this.pathFile, JSON.stringify(products, null, 2));
+          return "Producto agregado";
       } else {
-        throw new Error("No es posible agregar el producto");
+          throw new Error("No se pudieron obtener los productos");
       }
-    } catch (error) {
-      throw new Error("Error al agregar el producto.");
-    }
+  } catch (error) {
+      throw error;
   }
+};
 
 
     // Método Obtener Productos Por ID primario
-  async getProductById(id) {
-    try {
-      const products = await this.getProducts();
-      const product = products.find(product => product.id === id);
-      if (!product) {
-        throw new Error("Producto no encontrado");
+    async getProductById(productId){
+      try {
+          if(this.fileExist()){
+              const contenidoString = await fs.promises.readFile(this.pathFile,"utf-8");
+              const products = JSON.parse(contenidoString);
+              const product = products.find(p=>p.id === productId);
+              if(!product){
+                  throw new Error("El producto no existe");
+              }
+              return product;
+          } else {
+              throw new Error("No se pubo obtener el producto");
+          }
+      } catch (error) {
+          throw error;
       }
-      return product;
-    } catch (error) {
-      throw new Error("Error al obtener producto por ID");
-    }
-  }
+  };
 
-  // Método Obtener Productos Por ID secundario  
-  async getProductBySecondaryId(id){
-  try {
-    const productsId = await this.getProducts();
-    const filteredId = productsId.find(p=>p.secondaryId === id);
-    if(filteredId){
-        return filteredId;
-    } else {
-      throw new Error("El id solicitado no existe");
-    }
 
-} catch (error) {
-  throw new Error(error.message)
-}
-}
 
     // Método Actualizar Productos
 
@@ -146,9 +121,6 @@ class ProductManager {
     }
   }
 
-  generateUniqueId() {
-    return Date.now().toString(36) + Math.random().toString(36).substring(2);
-  }
 }
 
 

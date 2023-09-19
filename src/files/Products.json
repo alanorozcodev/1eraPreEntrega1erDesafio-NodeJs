@@ -1,8 +1,7 @@
 [
 	{
-		"id": "llztadnt9clx70660j",
-		"secondaryId": 1,
-		"title": "producto prueba",
+		"id": 1,
+		"title": "producto prueba 1",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -10,9 +9,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztakc7h1dkjc2brzb",
-		"secondaryId": 2,
-		"title": "producto prueba",
+		"id": 2,
+		"title": "producto prueba 2",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -20,9 +18,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztaqrfyr0u1ewghpj",
-		"secondaryId": 3,
-		"title": "producto prueba",
+		"id": 3,
+		"title": "producto prueba 3",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -30,9 +27,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztayi7le1t0h332yn",
-		"secondaryId": 4,
-		"title": "producto prueba",
+		"id": 4,
+		"title": "producto prueba 4",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -40,9 +36,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztb5v8k0lv1xt57ze",
-		"secondaryId": 5,
-		"title": "producto prueba",
+		"id": 5,
+		"title": "producto prueba 5",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -50,9 +45,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztbdgkyzsovto73fj",
-		"secondaryId": 6,
-		"title": "producto prueba",
+		"id": 6,
+		"title": "producto prueba 6",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -60,9 +54,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztbimhdras2vazyun",
-		"secondaryId": 7,
-		"title": "producto prueba",
+		"id": 7,
+		"title": "producto prueba 7",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -70,9 +63,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztbov2jy8q7kbljnq",
-		"secondaryId": 8,
-		"title": "producto prueba",
+		"id": 8,
+		"title": "producto prueba 8",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -80,9 +72,8 @@
 		"stock": 20
 	},
 	{
-		"id": "llztbwzfjpqxgb5dcy",
-		"secondaryId": 9,
-		"title": "producto prueba",
+		"id": 9,
+		"title": "producto prueba 9",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
@@ -90,13 +81,39 @@
 		"stock": 20
 	},
 	{
-		"id": "llztc1zfugxkhbjg01",
-		"secondaryId": 10,
-		"title": "producto prueba",
+		"id": 10,
+		"title": "producto prueba 10",
 		"description": "Este es un producto prueba",
 		"price": 150,
 		"thumbnail": "Sin imagen",
 		"code": "bcd123",
 		"stock": 20
+	},
+	{
+		"id": 11,
+		"title": "producto prueba 11",
+		"description": "asddasd",
+		"price": 1432,
+		"thumbnail": "fafa",
+		"code": "fasf",
+		"stock": 4
+	},
+	{
+		"id": 12,
+			"title": "producto prueba 12",
+			"description": "Este es un producto prueba",
+			"price": 567,
+			"thumbnail": "default",
+			"code": "poi567",
+			"stock": 3
+	},
+	{
+		"id": 13,
+			"title": "producto prueba 13",
+			"description": "pelota para jugar",
+			"price": 313,
+			"thumbnail": "default",
+			"code": "rrqrq",
+			"stock": 3
 	}
 ]
