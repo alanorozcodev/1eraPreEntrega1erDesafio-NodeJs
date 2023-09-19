@@ -26,13 +26,14 @@ socketClient.on("productsArray", (dataProducts)=>{
     dataProducts.forEach(product => {
         productsElements +=
         `<li>
-            <p>Nombre: ${product.title}</p><button onclick="deleteProduct(${product.id})"> Eliminar producto </button>
+            <p>Nombre: ${product.title}</p> <button onclick="deleteProduct(${product.id})"> Eliminar producto </button>
         </li> `
     });
     productsList.innerHTML = productsElements;
 });
 
-const deleteProduct = (productid) =>{
-    console.log(productid);
 
-};
+//Borrado de productos
+let deleteProduct = (productId) =>{
+    socketClient.emit("deleteProduct", productId)
+}

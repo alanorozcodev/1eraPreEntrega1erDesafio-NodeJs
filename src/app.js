@@ -48,6 +48,15 @@ io.on("connection", async (socket)=> {
         const products = await managerProductService.getProducts();
         io.emit("productsArray", products);
     });
+
+    //Borrar productos del cliente
+    socket.on("deleteProduct", async (deletedId) => { 
+    const newProducts = await managerProductService.deleteProduct(deletedId);
+    const products = await managerProductService.getProducts();
+        io.emit("productsArray", products);
+    });
+
+
 });
 
 
